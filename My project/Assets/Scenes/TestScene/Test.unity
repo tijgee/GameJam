@@ -358,6 +358,7 @@ GameObject:
   - component: {fileID: 969034619}
   - component: {fileID: 969034618}
   - component: {fileID: 969034617}
+  - component: {fileID: 969034622}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -494,6 +495,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &969034622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 969034616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a85a5a8b621a45644a31fbe60f05294c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 969034618}
+  bulletPrefab: {fileID: 3363979448129273696, guid: ad5129e72f5977a49baeff50c450a8d3, type: 3}
+  bulletDirection: {x: 0, y: 0}
+  bulletSpeed: 60
 --- !u!1 &1174694834
 GameObject:
   m_ObjectHideFlags: 0
@@ -701,7 +718,6 @@ GameObject:
   - component: {fileID: 2127545939}
   - component: {fileID: 2127545938}
   - component: {fileID: 2127545942}
-  - component: {fileID: 2127545941}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -775,23 +791,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2127545941
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2127545937}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8f39b427793cef4699b1e5eae9d8f95, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  crosshairs: {fileID: 1345405713710101789, guid: c9bd1b34990fef541b04a527a6a1b622, type: 3}
-  player: {fileID: 969034616}
-  bulletPrefab: {fileID: 7570642480949343014, guid: efc08e211d092bf47a14ee67ddb1a15b, type: 3}
-  bulletStart: {fileID: 969034616}
-  bulletSpeed: 60
 --- !u!114 &2127545942
 MonoBehaviour:
   m_ObjectHideFlags: 0

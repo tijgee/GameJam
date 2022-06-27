@@ -276,7 +276,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
-  player: {fileID: 0}
+  player: {fileID: 1327440045}
 --- !u!58 &1094979654
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1087,6 +1087,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4235299778274508890, guid: 705a4dba133ccab4ea94a08ce42e25df, type: 3}
+      propertyPath: rg
+      value: 
+      objectReference: {fileID: 6464699063226975070}
     - target: {fileID: 8017038822954127584, guid: 705a4dba133ccab4ea94a08ce42e25df, type: 3}
       propertyPath: m_Mass
       value: 0.0001
@@ -1105,3 +1109,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 705a4dba133ccab4ea94a08ce42e25df, type: 3}
+--- !u!50 &6464699063226975070 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 8017038822954127584, guid: 705a4dba133ccab4ea94a08ce42e25df, type: 3}
+  m_PrefabInstance: {fileID: 6464699063226975069}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6464699063226975071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1327440045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a85a5a8b621a45644a31fbe60f05294c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 7570642480949343014, guid: d2dce4a2b9d443040b094d1d259f13b1, type: 3}
+  bulletDirection: {x: 0, y: 0}
+  bulletSpeed: 60
