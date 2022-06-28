@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     public int round = 1;
     public int seconds = 10;
 
-    public GameObject enemy1;
+    public GameObject[] enemies;
     public float spawnTime;
 
     GameObject[] allObjects;
@@ -67,8 +67,9 @@ public class GameManager : MonoBehaviour
     {
         while(true){
             if(seconds > 0){
-                Vector3 enemyspawn = new Vector3(Random.Range(-8f, 8f), 7f, 0);
-                Instantiate(enemy1, enemyspawn, Quaternion.identity);
+                GameObject enemy = enemies[Random.Range(0,enemies.Length)];
+                Vector3 enemyLocation = new Vector3(Random.Range(-8f, 8f), 7f, 0);
+                Instantiate(enemy, enemyLocation, Quaternion.identity);
                 yield return new WaitForSeconds(spawnTime);
             }
         }
