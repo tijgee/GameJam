@@ -5,113 +5,62 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    //Manager
-    public GameObject roundDisplay;
-    public GameObject healthDisplay;
-    int round = 1;
-    
 
-    //Timer
-    public GameObject textDisplay;
-  
-    
+    public int round = 1;
+    public int seconds = 10;
 
-    int secondsLeft = 10;
-    public bool takingAway = false;
-
-    //Enemies
-    bool enemySpawn;
     public GameObject enemy1;
     public GameObject enemy2;
     public GameObject enemy3;
     public GameObject enemy4;
-
-    
-
-    public float waittime;
+    public float spawnTime;
 
     void Start()
     {
-        textDisplay.GetComponent<Text>().text = "00:" + secondsLeft;
-        roundDisplay.GetComponent<Text>().text = round.ToString();
-        
-        PlayerHealthSystem healthSystem = new PlayerHealthSystem(3);
-        healthDisplay.GetComponent<Text>().text = healthSystem.GetHealth().ToString();
+        StartCoroutine(Timer());
+        StartCoroutine(spawnEnemy());
     }
 
     void Update()
     {
-        if (takingAway == false && secondsLeft > 0)
-        {
-            enemySpawn = true;
-            StartCoroutine(TimerTake());
-            StartCoroutine(Enemyspawn());
-        }
-
-        if(secondsLeft <= 0)
+        if(seconds <= 0)
         {
             round++;
-            
-           
-            enemySpawn = false;
-            //round++;
-            switch (round)
-            {
+            switch(round){
                 case 2:
-                   
-                    secondsLeft = 5;
-                    roundDisplay.GetComponent<Text>().text = round.ToString();
+                    seconds = 5;
                     break;
                 case 3:
-                    secondsLeft = 45;
-                    roundDisplay.GetComponent<Text>().text = round.ToString();
+                    seconds = 45;
                     break;
                 case 4:
-                    secondsLeft = 70;
-                    roundDisplay.GetComponent<Text>().text = round.ToString();
+                    seconds = 70;
                     break;
                 case 5:
-                    secondsLeft = 40;
-                    roundDisplay.GetComponent<Text>().text = round.ToString();
-                    break;
-                case 6:
-                    secondsLeft = 0;
+                    seconds = 120;
                     break;
             }
         }
     }
 
 
-    IEnumerator TimerTake()
+    IEnumerator Timer()
     {
-        takingAway = true;
-        yield return new WaitForSeconds(1);
-        secondsLeft -= 1;
-        if (secondsLeft < 10 && secondsLeft > 0)
-        {
-            textDisplay.GetComponent<Text>().text = "00:0" + secondsLeft;
+        while(true){
+            seconds--;
+            yield return new WaitForSeconds(1);
         }
-
-        {
-            textDisplay.GetComponent<Text>().text = "00:" + secondsLeft;
-        }
-        takingAway = false;
-        
-        //yield return new WaitForSeconds(20);
-        enemySpawn = false;
-        //round++;
-       
     }
 
- 
-
-    IEnumerator Enemyspawn()
+    IEnumerator spawnEnemy()
     {
-        while (enemySpawn)
-        {
-            Vector3 enemyspawn = new Vector3(Random.Range(-8f, 8f), 7f, 0);
-            Instantiate(enemy1, enemyspawn, Quaternion.identity);
-            yield return new WaitForSeconds(waittime);
+        while(true){
+            if(seconds > 0){
+                Vector3 enemyspawn = new Vector3(Random.Range(-8f, 8f), 7f, 0);
+                Instantiate(enemy1, enemyspawn, Quaternion.identity);
+                yield return new WaitForSeconds(spawnTime);
+            }
         }
+        
     }
 }

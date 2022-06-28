@@ -8,11 +8,11 @@ public class Movement : MonoBehaviour
 
     
     public float dashSpeed = 200000;
-    public float runSpeed = 20.0f;
+    
+    private float moveSpeed;
     private Rigidbody2D rg;
     private float horizontal;
     private float vertical;
-
     private SpriteRenderer _renderer;
 
     bool dash = true;
@@ -22,6 +22,7 @@ public class Movement : MonoBehaviour
     {
         _renderer = GetComponent<SpriteRenderer>();
         rg = GetComponent<Rigidbody2D>();
+        moveSpeed = GetComponent<Stats>().moveSpeed;
         rg.freezeRotation = true;
     }
 
@@ -33,7 +34,7 @@ public class Movement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rg.velocity = new Vector2(horizontal * runSpeed, vertical * runSpeed);
+        rg.velocity = (new Vector2(horizontal, vertical)).normalized * moveSpeed;
         
         if(horizontal > 0)
             _renderer.flipX = false;

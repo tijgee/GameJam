@@ -19,11 +19,11 @@ public class Shooting : MonoBehaviour
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
         if(horizontal != 0 || vertical != 0)
-            bulletDirection = new Vector2(horizontal, vertical);
+            bulletDirection = (new Vector2(horizontal, vertical)).normalized;
 
         if(Input.GetKeyDown(KeyCode.Space)){
             GameObject bullet = Instantiate(bulletPrefab) as GameObject;
-            bullet.transform.position = transform.position + new Vector3(bulletDirection.x, bulletDirection.y, 0.0f);
+            bullet.transform.position = transform.position + (new Vector3(bulletDirection.x, bulletDirection.y, 0.0f)).normalized;
             bullet.transform.up = new Vector3(bulletDirection.x, bulletDirection.y, 0.0f);
             bullet.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
             bullet.GetComponent<Rigidbody2D>().velocity = bulletDirection * bulletSpeed;
