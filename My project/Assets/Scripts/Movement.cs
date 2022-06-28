@@ -14,13 +14,14 @@ public class Movement : MonoBehaviour
     private float horizontal;
     private float vertical;
     private SpriteRenderer _renderer;
-
+    private Animator animator;
     bool dash = true;
     int dashCooldown = 80;
 
     void Start()
     {
         _renderer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
         rg = GetComponent<Rigidbody2D>();
         moveSpeed = GetComponent<Stats>().moveSpeed;
         rg.freezeRotation = true;
@@ -35,11 +36,27 @@ public class Movement : MonoBehaviour
     private void FixedUpdate()
     {
         rg.velocity = (new Vector2(horizontal, vertical)).normalized * moveSpeed;
+        if(horizontal == 0){
+            if(vertical > 0){
+            animator.SetBool("Up", true);
+            animator.SetBool("Down", false);
+            } else if(vertical < 0){
+                animator.SetBool("Down", true);
+                animator.SetBool("Up", false);
+            } 
+        }
+        else {
+            animator.SetBool("Up", false);
+            animator.SetBool("Down", false);
+        }
+
+        
         
         if(horizontal > 0)
             _renderer.flipX = false;
         else if(horizontal < 0)
             _renderer.flipX = true;
+
         // if (dashCooldown == 0)
         // {
         //     dash = true;
