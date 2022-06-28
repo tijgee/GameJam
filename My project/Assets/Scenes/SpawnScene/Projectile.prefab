@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: -2459559035630002818}
   - component: {fileID: 4233021594816865538}
   - component: {fileID: -6733680832368016955}
-  - component: {fileID: 573548616352799106}
+  - component: {fileID: -6905607654987832471}
+  - component: {fileID: -2640886189011774501}
   m_Layer: 0
   m_Name: Projectile
   m_TagString: bullet
@@ -148,7 +149,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &573548616352799106
+--- !u!114 &-6905607654987832471
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -157,7 +158,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 7570642480949343014}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a52e2d156d9e894aa889f7cdc42e559, type: 3}
+  m_Script: {fileID: 11500000, guid: 3466917a2a745534e80bc146baffa11d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-2640886189011774501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7570642480949343014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38d618997cd96444188bdefc27421792, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 1
+  healthMax: 1
   damage: 1
+  moveSpeed: 20
+  attackSpeed: 0

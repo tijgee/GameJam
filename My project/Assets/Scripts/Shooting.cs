@@ -23,7 +23,7 @@ public class Shooting : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.Space)){
             GameObject bullet = Instantiate(bulletPrefab) as GameObject;
-            bullet.transform.position = transform.position + (new Vector3(bulletDirection.x, bulletDirection.y, 0.0f)).normalized;
+            bullet.transform.position = transform.position + ((new Vector3(bulletDirection.x, bulletDirection.y, 0.0f)).normalized * 2);
             bullet.transform.up = new Vector3(bulletDirection.x, bulletDirection.y, 0.0f);
             bullet.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
             bullet.GetComponent<Rigidbody2D>().velocity = bulletDirection * bulletSpeed;
