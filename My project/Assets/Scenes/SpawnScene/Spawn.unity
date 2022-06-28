@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 34507697}
   - component: {fileID: 34507696}
+  - component: {fileID: 34507698}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -152,15 +153,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffc5fbbbb4c136f4994c7ba37af9b848, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roundDisplay: {fileID: 1710288832}
-  healthDisplay: {fileID: 1846852524}
-  textDisplay: {fileID: 1887355185}
-  takingAway: 0
+  round: 1
+  seconds: 10
   enemy1: {fileID: 1925848935}
   enemy2: {fileID: 0}
   enemy3: {fileID: 0}
   enemy4: {fileID: 0}
-  waittime: 30
+  spawnTime: 2
 --- !u!4 &34507697
 Transform:
   m_ObjectHideFlags: 0
@@ -176,6 +175,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &34507698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 34507695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cf5bd6bbb8250748ba8062060ea1256, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roundDisplay: {fileID: 1710288832}
+  healthDisplay: {fileID: 1846852524}
+  textDisplay: {fileID: 1887355185}
+  player: {fileID: 1327440045}
 --- !u!1 &838852336
 GameObject:
   m_ObjectHideFlags: 0
@@ -772,7 +787,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1925848935}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -990,11 +1005,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8f39b427793cef4699b1e5eae9d8f95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crosshairs: {fileID: 1345405713710101789, guid: 9f262e2163bc2cd4e93f9633cdfb04e3, type: 3}
-  player: {fileID: 8584876319427635660, guid: 705a4dba133ccab4ea94a08ce42e25df, type: 3}
-  bulletPrefab: {fileID: 7570642480949343014, guid: d2dce4a2b9d443040b094d1d259f13b1, type: 3}
-  bulletStart: {fileID: 1327440045}
-  bulletSpeed: 60
 --- !u!114 &2145535653
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1037,11 +1047,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2740585235057079140, guid: 705a4dba133ccab4ea94a08ce42e25df, type: 3}
       propertyPath: m_Size.x
-      value: 1.4492826
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2740585235057079140, guid: 705a4dba133ccab4ea94a08ce42e25df, type: 3}
+      propertyPath: m_Size.y
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 2740585235057079140, guid: 705a4dba133ccab4ea94a08ce42e25df, type: 3}
       propertyPath: m_Offset.x
       value: -0.025358677
+      objectReference: {fileID: 0}
+    - target: {fileID: 2740585235057079140, guid: 705a4dba133ccab4ea94a08ce42e25df, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3891255002967215930, guid: 705a4dba133ccab4ea94a08ce42e25df, type: 3}
       propertyPath: m_RootOrder
@@ -1129,3 +1147,32 @@ MonoBehaviour:
   bulletPrefab: {fileID: 7570642480949343014, guid: d2dce4a2b9d443040b094d1d259f13b1, type: 3}
   bulletDirection: {x: 0, y: 0}
   bulletSpeed: 60
+--- !u!114 &6464699063226975072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1327440045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38d618997cd96444188bdefc27421792, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 3
+  healthMax: 3
+  damage: 2
+  moveSpeed: 10
+  attackSpeed: 0
+--- !u!114 &6464699063226975073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1327440045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb2a1217a8f503741b637bd936876a89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
