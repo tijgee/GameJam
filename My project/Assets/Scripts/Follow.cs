@@ -5,7 +5,11 @@ using UnityEngine;
 public class Follow : MonoBehaviour
 {
     public int speed;
-    public GameObject player;
+    private GameObject player;
+
+    void Start(){
+        player = GameObject.FindWithTag("Player");
+    }
 
     void Update()
     {

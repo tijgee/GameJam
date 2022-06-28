@@ -10,10 +10,9 @@ public class GameManager : MonoBehaviour
     public int seconds = 10;
 
     public GameObject enemy1;
-    public GameObject enemy2;
-    public GameObject enemy3;
-    public GameObject enemy4;
     public float spawnTime;
+
+    GameObject[] allObjects;
 
     void Start()
     {
@@ -23,6 +22,13 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        allObjects = UnityEngine.Object.FindObjectsOfType<GameObject>();
+        foreach(GameObject obj in allObjects){
+            if(obj.GetComponent<Stats>() != null && obj.GetComponent<Stats>().health <= 0){
+                obj.SetActive(false);
+                StartCoroutine(destroyObject(obj));
+            }
+        }
         if(seconds <= 0)
         {
             round++;
@@ -50,6 +56,11 @@ public class GameManager : MonoBehaviour
             seconds--;
             yield return new WaitForSeconds(1);
         }
+    }
+
+    IEnumerator destroyObject(GameObject obj){
+        yield return new WaitForSeconds(3);
+        Destroy(obj);
     }
 
     IEnumerator spawnEnemy()
